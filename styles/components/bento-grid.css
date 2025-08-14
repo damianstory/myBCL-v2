@@ -7,7 +7,8 @@
     grid-template-columns: 1fr;
     gap: 8px;
     margin: 4px auto;
-    max-width: 100%;
+    max-width: 500px;
+    width: 100%;
     animation: fadeInUp 0.6s ease-out 0.4s both;
 }
 
@@ -186,7 +187,7 @@
     .bento-grid {
         gap: 8px;
         margin: 4px auto;
-        max-width: 350px;
+        max-width: 520px;
     }
     
     .bento-box {
@@ -227,7 +228,7 @@
     .bento-grid {
         gap: 12px;
         margin: 2px auto;
-        max-width: 400px;
+        max-width: 600px;
     }
     
     .bento-box {
@@ -267,7 +268,7 @@
 /* Large Desktop */
 @media (min-width: 1440px) {
     .bento-grid {
-        max-width: 420px;
+        max-width: 640px;
         margin: 4px auto;
     }
     

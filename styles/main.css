@@ -139,7 +139,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: stretch;
     gap: 24px;
     order: 2;
     background: #FFFFFF;
@@ -346,7 +346,7 @@ textarea::placeholder {
     .content-column {
         padding: 24px var(--container-padding) 20px;
         justify-content: flex-start;
-        align-items: center;
+        align-items: stretch;
         order: 1;
         gap: 28px;
     }
@@ -369,7 +369,7 @@ textarea::placeholder {
         padding: 24px var(--container-padding) 20px;
         gap: 24px;
         justify-content: flex-start;
-        align-items: center;
+        align-items: stretch;
     }
 }
 
