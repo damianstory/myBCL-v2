@@ -1,0 +1,52 @@
+/* ==================================================
+   Museo Sans - Self-hosted font-face declarations
+   Weights: 300, 500, 700, 900
+   NOTE: Place font files in /fonts/museo-sans/
+   Filenames expected:
+   - MuseoSans-300.woff2 / .woff
+   - MuseoSans-500.woff2 / .woff
+   - MuseoSans-700.woff2 / .woff
+   - MuseoSans-900.woff2 / .woff
+   ================================================== */
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: local('Museo Sans Light'), local('MuseoSans-300'), local('MuseoSans Light'),
+         url('../fonts/museo-sans/MuseoSans-300.woff2') format('woff2'),
+         url('../fonts/museo-sans/MuseoSans-300.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: local('Museo Sans Medium'), local('MuseoSans-500'), local('MuseoSans Medium'),
+         url('../fonts/museo-sans/MuseoSans-500.woff2') format('woff2'),
+         url('../fonts/museo-sans/MuseoSans-500.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: local('Museo Sans Bold'), local('MuseoSans-700'), local('MuseoSans Bold'),
+         url('../fonts/museo-sans/MuseoSans-700.woff2') format('woff2'),
+         url('../fonts/museo-sans/MuseoSans-700.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: local('Museo Sans Black'), local('MuseoSans-900'), local('MuseoSans Black'),
+         url('../fonts/museo-sans/MuseoSans-900.woff2') format('woff2'),
+         url('../fonts/museo-sans/MuseoSans-900.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+

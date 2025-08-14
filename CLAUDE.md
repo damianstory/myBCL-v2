@@ -1,3 +1,7 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # myBlueprint Career Launch Landing Page
 
 ## Project Overview
@@ -17,13 +21,68 @@ Always reference these documents for detailed specifications, measurements, and 
 - **Images**: WebP with JPG fallbacks, optimized for performance
 
 ## Key Commands
-- `npm run build`: Build and optimize for production
-- `npm run dev`: Start local development server
-- `npm run test`: Run form validation tests
-- `npm start`: Start the application locally
+- `npm start` or `npm run dev`: Start local development server (uses Python HTTP server on port 8080)
+- `python3 -m http.server 8000`: Alternative local server command (if port 8080 is occupied)
+- `npm run build`: Build and optimize for production (currently placeholder)
+- `npm run test`: Run form validation tests (currently placeholder)
+- `npm run validate-html`: HTML validation (currently placeholder) 
+- `npm run check-a11y`: Accessibility audit (currently placeholder)
+
+## Architecture Overview
+
+### Application Structure
+The application follows a component-based architecture with a main application class (`MyBlueprintCareerLaunch`) that manages:
+- Component initialization and lifecycle
+- Accessibility features and keyboard navigation
+- Performance monitoring and error tracking
+- Progressive enhancement patterns
+
+### CSS Architecture
+- **Component-based styling**: Each major component has its own CSS file
+- **CSS variables**: Centralized brand colors and design tokens in `styles/main.css`
+- **Mobile-first responsive**: Progressive enhancement with breakpoints at 768px, 1024px, 1440px
+- **Above-the-fold optimization**: Layout designed to fit within 100vh without scrolling
+
+### JavaScript Module Pattern
+- **Main App** (`js/main.js`): Application lifecycle, accessibility, performance tracking
+- **Component Modules**: Individual modules for form handling, video interactions, bento grid UX
+- **Progressive Enhancement**: Critical functionality works without JavaScript; enhancements layer on top
+
+### Layout System
+- **Two-column desktop layout**: Content column (left) + Image column (right) using CSS Grid
+- **Single-column mobile layout**: Image above content, stacked vertically
+- **Content flow**: Logo → Hero content → Bento grid → Email form
+- **Space distribution**: Uses `justify-content: space-between` to fill 100vh precisely
+
+## File Structure
+```
+/
+├── index.html                    # Main landing page with inline critical CSS
+├── styles/
+│   ├── main.css                 # Global styles, CSS variables, responsive rules
+│   ├── museo-sans.css           # Custom font loading
+│   ├── responsive.css           # Additional responsive styles
+│   └── components/              # Component-specific styles
+│       ├── hero.css             # Hero section styling
+│       ├── bento-grid.css       # Bento grid components
+│       ├── email-form.css       # Form styling and states
+│       └── image-column.css     # Background image column
+├── js/
+│   ├── main.js                  # Main application class and initialization
+│   ├── validation.js            # Form validation utilities
+│   └── components/              # Component JavaScript modules
+│       ├── form-handler.js      # Zoho API integration
+│       ├── video-player.js      # Video placeholder interactions
+│       └── bento-interactions.js # Bento grid enhancements
+├── images/
+│   ├── logo.svg                 # myBlueprint logo
+│   └── placeholder-note.md      # Notes about missing hero images
+└── fonts/
+    └── museo-sans/              # Custom font files
+```
 
 ## Brand Guidelines (CRITICAL)
-- **Colors**: Use ONLY myBlueprint brand colors from style guide
+- **Colors**: Use ONLY myBlueprint brand colors from CSS variables
   - Primary Blue: #0092FF
   - Navy: #22224C  
   - Light Blue: #C6E7FF
@@ -33,20 +92,11 @@ Always reference these documents for detailed specifications, measurements, and 
 - **Logo**: Use proper myBlueprint logo, never distort or alter colors
 - **Contrast**: Maintain WCAG AA compliance (minimum 4.5:1 ratio)
 
-## Code Style Requirements
-- Use modern ES6+ JavaScript (import/export syntax)
-- CSS Grid and Flexbox for layouts (no CSS frameworks)
-- Mobile-first responsive design approach
-- Semantic HTML5 elements with proper ARIA labels
-- BEM methodology for CSS class naming
-- No external dependencies beyond font loading and form API
-
-## Performance Requirements
-- Target <2s load time on mobile
-- Optimize all images (WebP format preferred)
-- Inline critical CSS in `<head>`
-- Use `font-display: swap` for custom fonts
-- Implement lazy loading for non-critical assets
+## Layout & Spacing Requirements
+- **Above-the-fold constraint**: All content must fit within 100vh without scrolling
+- **Content column spacing**: Uses reduced padding (30-40px) and tight gaps (16-20px)
+- **Component spacing**: Bento grid margin of 8px, reduced form padding
+- **Responsive adjustments**: Consistent spacing reductions across all breakpoints
 
 ## Form Integration Specs
 - Single email input field with validation
@@ -57,32 +107,12 @@ Always reference these documents for detailed specifications, measurements, and 
 - Loading states during submission
 - NEVER use localStorage or sessionStorage (not supported in Claude.ai environment)
 
-## Layout Structure
-- Two-column layout: content on left, image on right (desktop)
-- Single column stack on mobile (image above content)
-- Content column contains: logo, hero text, bento grid, email form
-- Image column contains: professional career photography
-- Bento grid: Two stacked boxes (text box + video box) for enhanced content
-- Maximum container width: 1200px, centered
-- Clean, minimal design with proper spacing
-
 ## Bento Grid Requirements
 - Two stacked boxes in content column between hero text and form
 - Top box: Text content with heading and description
 - Bottom box: Video container with play button overlay
-- Consistent styling with other fair-related sites
 - Fully responsive design across all breakpoints
-- Reference implementation: https://21st.dev/tommyjepsen/feature-section-with-bento-grid/default
-- Use myBlueprint brand colors and typography
-
-## Content Specifications
-- **Event Name**: "myBlueprint Career Launch"
-- **Event Date**: "December 2nd" (prominent display)
-- **Key Stat**: "50,000+ students attending" 
-- **CTA**: "Get Notified When Agenda is Released" or similar
-- **Tone**: Professional, innovative, urgent (FOMO)
-- **Bento Text Box**: Content about career opportunities/industry insights
-- **Bento Video Box**: Video placeholder with play button (video content TBD)
+- Interactive hover effects and accessibility features
 
 ## Responsive Breakpoints
 ```css
@@ -92,49 +122,29 @@ Desktop: 1024px+
 Large: 1440px+
 ```
 
-## Accessibility Requirements
+## Accessibility Implementation
 - Semantic HTML structure with proper headings hierarchy
 - Form labels properly associated with inputs
 - Keyboard navigation support (tab order: logo → email → submit)
-- Focus indicators on all interactive elements
-- Alt text for all images including logo
-- Color contrast minimum 4.5:1 for normal text, 3:1 for large text
+- Skip links for keyboard users
+- Focus management with focus-visible polyfill
+- Screen reader announcements via live regions
+- High contrast and reduced motion detection
 
-## File Structure
-```
-/
-├── index.html          # Main landing page
-├── styles/
-│   ├── main.css        # Main styles
-│   └── responsive.css  # Media queries
-├── js/
-│   ├── main.js         # Form handling and interactions
-│   └── validation.js   # Form validation logic
-├── images/
-│   ├── logo.svg        # myBlueprint logo
-│   ├── bg-hero.webp    # Background image
-│   └── bg-hero.jpg     # Background fallback
-└── fonts/              # Museo Sans font files
-```
+## Performance Requirements
+- Target <2s load time on mobile
+- Critical CSS inlined in HTML head
+- Font loading with `font-display: swap`
+- Lazy loading for non-critical assets
+- Performance monitoring via PerformanceObserver API
 
 ## Development Notes
 - Test form submission thoroughly before deployment
 - Verify brand compliance against provided style guide
-- Check performance with PageSpeed Insights
-- Test across browsers: Chrome, Safari, Firefox, Edge
-- Validate HTML and check accessibility with tools
-- Ensure mobile touch targets are minimum 44px
-- Background image should feature diverse professionals in career settings
-
-## Deployment Checklist
-- [ ] Form API integration tested and working
-- [ ] All images optimized and compressed
-- [ ] Cross-browser testing completed
-- [ ] Mobile responsiveness verified
-- [ ] Brand guidelines compliance confirmed
-- [ ] Performance targets met (<2s load time)
-- [ ] Accessibility validation passed
-- [ ] Meta tags and favicon implemented
+- Above-the-fold layout must not require scrolling on standard desktop resolutions
+- Use `python3 -m http.server` on different ports if default conflicts
+- All JavaScript components use progressive enhancement patterns
+- Error tracking and performance metrics built into main application
 
 ## Important Constraints
 - NO external CSS/JS frameworks (Bootstrap, Tailwind, jQuery, etc.)
@@ -143,6 +153,7 @@ Large: 1440px+
 - MUST maintain exact brand colors and typography
 - MUST be fully functional without JavaScript as fallback
 - MUST work on all modern browsers and mobile devices
+- Layout MUST fit within 100vh without scrolling (above-the-fold requirement)
 
 ## Success Metrics
 - Primary: Email conversion rate >25%
