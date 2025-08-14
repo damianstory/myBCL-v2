@@ -5,7 +5,7 @@
 class BentoInteractions {
     constructor() {
         this.bentoBoxes = [];
-        this.textBox = null;
+        this.detailsBox = null;
         this.videoBox = null;
         this.observers = [];
         this.isReducedMotion = false;
@@ -31,7 +31,7 @@ class BentoInteractions {
      */
     setupBentoInteractions() {
         this.bentoBoxes = Array.from(document.querySelectorAll('.bento-box'));
-        this.textBox = document.querySelector('.bento-text');
+        this.detailsBox = document.querySelector('.bento-details');
         this.videoBox = document.querySelector('.bento-video');
 
         if (this.bentoBoxes.length === 0) {
@@ -88,15 +88,15 @@ class BentoInteractions {
 
             // Add aria-label for better screen reader support
             if (!box.hasAttribute('aria-label')) {
-                if (box.classList.contains('bento-text')) {
-                    box.setAttribute('aria-label', 'Career pathways information');
+                if (box.classList.contains('bento-details')) {
+                    box.setAttribute('aria-label', 'Event details information');
                 } else if (box.classList.contains('bento-video')) {
                     box.setAttribute('aria-label', 'Career launch preview video');
                 }
             }
 
             // Add aria-describedby for additional context
-            const content = box.querySelector('p, .video-placeholder span');
+            const content = box.querySelector('.detail-description, .video-placeholder span');
             if (content && !content.id) {
                 content.id = `bento-desc-${index}`;
                 box.setAttribute('aria-describedby', content.id);
@@ -206,8 +206,8 @@ class BentoInteractions {
         });
 
         // Specific behavior for different box types
-        if (box.classList.contains('bento-text')) {
-            this.handleTextBoxClick(box);
+        if (box.classList.contains('bento-details')) {
+            this.handleDetailsBoxClick(box);
         } else if (box.classList.contains('bento-video')) {
             this.handleVideoBoxClick(box);
         }
@@ -277,11 +277,11 @@ class BentoInteractions {
     }
 
     /**
-     * Handle text box specific interactions
-     * @param {HTMLElement} box - Text box element
+     * Handle details box specific interactions
+     * @param {HTMLElement} box - Details box element
      */
-    handleTextBoxClick(box) {
-        // Could implement text expansion, modal, or other interactions
+    handleDetailsBoxClick(box) {
+        // Could implement details expansion, modal, or other interactions
         this.pulseBox(box);
     }
 
@@ -403,7 +403,7 @@ class BentoInteractions {
      */
     announceBoxContent(box) {
         const announcement = box.getAttribute('aria-label') || 
-                            box.querySelector('h3')?.textContent || 
+                            box.querySelector('.detail-title')?.textContent || 
                             'Bento box focused';
         
         this.announceToScreenReader(announcement);
@@ -415,7 +415,7 @@ class BentoInteractions {
      * @returns {string} - Box type
      */
     getBoxType(box) {
-        if (box.classList.contains('bento-text')) return 'text';
+        if (box.classList.contains('bento-details')) return 'details';
         if (box.classList.contains('bento-video')) return 'video';
         return 'unknown';
     }

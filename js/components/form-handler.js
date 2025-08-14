@@ -101,7 +101,7 @@ class FormHandler {
     setupAccessibility() {
         // Ensure proper ARIA relationships
         if (!this.emailInput.getAttribute('aria-describedby')) {
-            this.emailInput.setAttribute('aria-describedby', 'email-help email-error');
+            this.emailInput.setAttribute('aria-describedby', 'email-error');
         }
 
         // Live region for announcements
