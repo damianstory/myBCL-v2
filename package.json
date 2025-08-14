@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "python3 -m http.server 8080 || python -m http.server 8080",
     "start": "npm run dev",
-    "build": "echo 'Production build ready. Deploy files to hosting platform.'",
+    "build": "mkdir -p public && cp -r *.html styles js images fonts public/ 2>/dev/null || cp *.html public/ && [ -d styles ] && cp -r styles public/ || true && [ -d js ] && cp -r js public/ || true && [ -d images ] && cp -r images public/ || true && [ -d fonts ] && cp -r fonts public/ || true",
     "test": "echo 'Testing form validation and responsive design'",
     "validate-html": "echo 'HTML validation would run here'",
     "validate-css": "echo 'CSS validation would run here'",
