@@ -106,6 +106,11 @@ class MyBlueprintCareerLaunch {
                 this.components.bentoInteractions = window.bentoInteractions || new BentoInteractions();
             }
             
+            // Image rotator for hero images
+            if (window.ImageRotator) {
+                this.components.imageRotator = window.imageRotator || new ImageRotator();
+            }
+            
             // Initialize smooth scrolling
             this.initializeSmoothScrolling();
             
@@ -569,6 +574,28 @@ class MyBlueprintCareerLaunch {
     isLoaded() {
         return this.isInitialized;
     }
+
+    /**
+     * Cleanup components when page is unloaded
+     */
+    destroy() {
+        // Cleanup components
+        Object.values(this.components).forEach(component => {
+            if (component && typeof component.destroy === 'function') {
+                try {
+                    component.destroy();
+                } catch (error) {
+                    console.error('Error destroying component:', error);
+                }
+            }
+        });
+
+        // Clear components
+        this.components = {};
+        this.isInitialized = false;
+
+        console.log('myBlueprint Career Launch - Application destroyed');
+    }
 }
 
 // Initialize the application
@@ -576,6 +603,13 @@ const app = new MyBlueprintCareerLaunch();
 
 // Make available globally
 window.myBlueprintApp = app;
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+    if (app && typeof app.destroy === 'function') {
+        app.destroy();
+    }
+});
 
 // Export for module systems
 if (typeof module !== 'undefined' && module.exports) {

@@ -20,19 +20,54 @@
     overflow: hidden;
 }
 
-/* Hero Image */
+/* Hero Image - Base styles for rotating images */
 .hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center top; /* Mobile-first: focus on top portion */
     display: block;
-    transition: transform var(--transition-slow);
+    transition: transform var(--transition-slow), opacity 300ms ease-in-out;
+    filter: brightness(1.02) contrast(1.05) saturate(1.1);
+    position: relative;
+    z-index: 2;
+}
+
+/* Next image for fade transitions */
+.hero-image-next {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 300ms ease-in-out;
     filter: brightness(1.02) contrast(1.05) saturate(1.1);
 }
 
+/* Hover effects - only apply when not actively rotating */
 .hero-image:hover {
     transform: scale(1.02);
+}
+
+.hero-image-next:hover {
+    transform: scale(1.02);
+}
+
+/* Image rotation fade states */
+.image-rotating .hero-image,
+.image-rotating .hero-image-next {
+    transition: opacity 300ms ease-in-out, transform var(--transition-slow);
+}
+
+/* Pause rotation on hover */
+.image-column:hover .hero-image,
+.image-column:hover .hero-image-next {
+    animation-play-state: paused;
 }
 
 /* Image Overlay for Text Readability (if needed) */
@@ -169,7 +204,8 @@
         height: 100vh;
     }
     
-    .hero-image {
+    .hero-image,
+    .hero-image-next {
         object-position: center center;
         height: 100%;
     }
@@ -204,7 +240,8 @@
         height: 100vh;
     }
     
-    .hero-image {
+    .hero-image,
+    .hero-image-next {
         object-position: center center;
     }
     
@@ -229,7 +266,8 @@
 
 /* Large Desktop */
 @media (min-width: 1440px) {
-    .hero-image {
+    .hero-image,
+    .hero-image-next {
         object-position: center center;
     }
     
@@ -240,7 +278,8 @@
 
 /* High DPI Displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .hero-image {
+    .hero-image,
+    .hero-image-next {
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
     }
@@ -249,12 +288,14 @@
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
     .hero-image,
+    .hero-image-next,
     .image-overlay,
     .image-column::after {
         transition: none;
     }
     
-    .hero-image:hover {
+    .hero-image:hover,
+    .hero-image-next:hover {
         transform: none;
     }
     
