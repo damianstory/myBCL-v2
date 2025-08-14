@@ -423,3 +423,44 @@ textarea::placeholder {
         margin-bottom: 20px;
     }
 }
+
+/* Footer Styles */
+.site-footer {
+    background: #FFFFFF;
+    border-top: 1px solid var(--neutral-2);
+    padding: 24px 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    text-align: center;
+}
+
+.footer-content p {
+    font-size: 12px;
+    color: var(--neutral-4);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.footer-content a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+    color: #0078CC;
+}
+
+/* Mobile Footer */
+@media (max-width: 767px) {
+    .footer-content p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+}

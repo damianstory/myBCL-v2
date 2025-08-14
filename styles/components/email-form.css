@@ -2,10 +2,23 @@
    Minimal Horizontal Email Form - Updated Existing Classes
    ================================================== */
 
+/* Form Introduction Text */
+.form-intro {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #000000;
+    text-align: center;
+    margin: 0 auto 8px;
+    max-width: 500px;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
 .email-form {
     width: 100%;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
     animation: fadeInUp 0.6s ease-out 0.5s both;
 }
 
@@ -211,6 +224,12 @@
 
 /* Tablet: Horizontal with Larger Gaps */
 @media (min-width: 768px) and (max-width: 1023px) {
+    .form-intro {
+        font-size: 15px;
+        max-width: 400px;
+        margin-bottom: 10px;
+    }
+    
     .email-form {
         max-width: 400px;
     }
@@ -227,8 +246,16 @@
 
 /* Desktop: Compact Horizontal */
 @media (min-width: 1024px) {
+    .form-intro {
+        font-size: 15px;
+        max-width: 600px;
+        margin-bottom: 8px;
+        white-space: nowrap;
+    }
+    
     .email-form {
         max-width: 480px;
+        margin-bottom: 60px;
     }
     
     .input-group {
@@ -266,6 +293,7 @@
 
 /* Accessibility and reduced motion */
 @media (prefers-reduced-motion: reduce) {
+    .form-intro,
     .email-form {
         animation: none;
     }
