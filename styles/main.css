@@ -135,10 +135,11 @@ body {
 
 /* Content Column */
 .content-column {
-    padding: 16px var(--container-padding);
+    padding: 0px var(--container-padding) 16px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     gap: 24px;
     order: 2;
     background: #FFFFFF;
@@ -343,8 +344,9 @@ textarea::placeholder {
     }
     
     .content-column {
-        padding: 20px var(--container-padding);
+        padding: 0px var(--container-padding) 20px;
         justify-content: flex-start;
+        align-items: center;
         order: 1;
         gap: 28px;
     }
@@ -364,9 +366,10 @@ textarea::placeholder {
     }
     
     .content-column {
-        padding: 16px var(--container-padding) 20px;
+        padding: 0px var(--container-padding) 20px;
         gap: 24px;
         justify-content: flex-start;
+        align-items: center;
     }
 }
 
