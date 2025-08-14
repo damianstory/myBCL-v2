@@ -264,21 +264,25 @@
 /* Desktop Styles */
 @media (min-width: 1024px) {
     .form-container {
-        padding: 24px;
-    }
-    
-    .form-title {
-        font-size: 22px;
-        margin-bottom: 24px;
-    }
-    
-    .email-input {
         padding: 16px;
     }
     
+    .form-title {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .input-group {
+        margin-bottom: 12px;
+    }
+    
+    .email-input {
+        padding: 14px;
+    }
+    
     .cta-button {
-        padding: 16px 32px;
-        min-height: 56px;
+        padding: 14px 28px;
+        min-height: 48px;
     }
 }
 

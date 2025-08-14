@@ -145,15 +145,37 @@
     }
     
     .content-column {
-        padding: 70px 50px;
+        height: 100vh;
+        padding: 24px 40px 30px;
+        gap: 12px;
+        justify-content: flex-start;
     }
     
     .hero-content {
         max-width: 520px;
+        gap: 8px;
     }
     
     .bento-grid {
         max-width: 380px;
+        gap: 10px;
+        margin: 4px 0;
+    }
+    
+    .bento-box {
+        padding: 14px;
+    }
+    
+    .bento-text {
+        min-height: 90px;
+    }
+    
+    .bento-video {
+        min-height: 140px;
+    }
+    
+    .form-container {
+        padding: 16px;
     }
 }
 
@@ -164,7 +186,35 @@
     }
     
     .content-column {
-        padding: 80px 60px;
+        height: 100vh;
+        padding: 24px 40px 30px;
+        gap: 12px;
+        justify-content: flex-start;
+    }
+    
+    .hero-content {
+        gap: 8px;
+    }
+    
+    .bento-grid {
+        gap: 10px;
+        margin: 4px 0;
+    }
+    
+    .bento-box {
+        padding: 14px;
+    }
+    
+    .bento-text {
+        min-height: 90px;
+    }
+    
+    .bento-video {
+        min-height: 140px;
+    }
+    
+    .form-container {
+        padding: 16px;
     }
 }
 

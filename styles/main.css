@@ -359,14 +359,16 @@ textarea::placeholder {
 /* Desktop Styles */
 @media (min-width: 1024px) {
     :root {
-        --container-padding: 60px;
+        --container-padding: 40px;
         --section-gap: 80px;
         --element-gap: 40px;
     }
     
     .content-column {
-        padding: 40px var(--container-padding);
-        gap: 20px;
+        height: 100vh;
+        padding: 24px var(--container-padding) 30px;
+        gap: 12px;
+        justify-content: flex-start;
     }
 }
 

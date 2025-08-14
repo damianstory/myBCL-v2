@@ -99,8 +99,9 @@
 /* Desktop Styles */
 @media (min-width: 1024px) {
     .hero-content {
-        gap: 12px;
+        gap: 8px;
         max-width: 540px;
+        margin-bottom: 0;
     }
     
     .hero-title {
@@ -119,7 +120,7 @@
     
     .supporting-text {
         font-size: 16px;
-        line-height: 1.6;
+        line-height: 1.5;
     }
 }
 
