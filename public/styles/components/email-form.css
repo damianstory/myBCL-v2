@@ -1,0 +1,374 @@
+/* ==================================================
+   Minimal Horizontal Email Form - Updated Existing Classes
+   ================================================== */
+
+/* Form Introduction Text */
+.form-intro {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #000000;
+    text-align: center;
+    margin: 0 auto 8px;
+    max-width: 500px;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+.email-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    animation: fadeInUp 0.6s ease-out 0.5s both;
+}
+
+/* Hide/Remove Container Background and Title */
+.form-container {
+    display: none !important;
+}
+
+.form-title {
+    display: none !important;
+}
+
+.input-help {
+    display: none !important;
+}
+
+/* Transform input-group to horizontal flex container */
+.input-group {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 0;
+    position: relative;
+}
+
+/* Update existing email-input for horizontal layout */
+.email-input {
+    flex: 1;
+    padding: 16px 20px;
+    border: 2px solid var(--neutral-2);
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: var(--font-primary);
+    font-weight: 400;
+    background: #FFFFFF;
+    color: var(--navy);
+    transition: all var(--transition-fast);
+    outline: none;
+    margin-bottom: 0;
+}
+
+.email-input::placeholder {
+    color: var(--neutral-3);
+    font-weight: 300;
+}
+
+.email-input:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 146, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.email-input.error {
+    border-color: var(--neutral-6);
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Update existing cta-button for horizontal layout */
+.cta-button {
+    flex-shrink: 0;
+    padding: 16px 24px;
+    background: var(--primary-blue);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+    min-width: 120px;
+    width: auto; /* Override any existing width: 100% */
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.cta-button:hover {
+    background: #0078CC;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 146, 255, 0.3);
+}
+
+.cta-button:focus {
+    outline: 2px solid var(--navy);
+    outline-offset: 2px;
+}
+
+.cta-button:disabled {
+    background: var(--neutral-3);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Error Message - Positioned Below Form */
+.error-message {
+    color: var(--neutral-6);
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+    padding-left: 20px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all var(--transition-fast);
+}
+
+.error-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Success Message */
+.success-message {
+    background: rgba(198, 231, 255, 0.95);
+    border: 1px solid var(--primary-blue);
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+    color: var(--navy);
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 12px;
+    opacity: 0;
+    transition: all var(--transition-medium);
+}
+
+.success-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loading State */
+.cta-button.loading {
+    pointer-events: none;
+    background: var(--neutral-3);
+}
+
+.cta-button.loading::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid #FFFFFF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+/* Button States */
+.cta-button .button-text {
+    transition: opacity var(--transition-fast);
+}
+
+.cta-button.loading .button-text {
+    opacity: 0.7;
+}
+
+/* Success State */
+.cta-button.success {
+    background: #10B981;
+    color: #FFFFFF;
+    pointer-events: none;
+}
+
+.cta-button.success::after {
+    content: '✓';
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.cta-button.success .button-text {
+    opacity: 0;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Mobile: Stack Vertically */
+@media (max-width: 767px) {
+    .input-group {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .email-input {
+        width: 100%;
+        padding: 18px 20px;
+        font-size: 16px;
+    }
+    
+    .cta-button {
+        width: 100%;
+        min-width: auto;
+        padding: 18px 20px;
+        font-size: 16px;
+    }
+}
+
+/* Tablet: Horizontal with Larger Gaps */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .form-intro {
+        font-size: 15px;
+        max-width: 400px;
+        margin-bottom: 10px;
+    }
+    
+    .email-form {
+        max-width: 400px;
+    }
+    
+    .input-group {
+        gap: 16px;
+    }
+    
+    .cta-button {
+        min-width: 140px;
+        padding: 16px 28px;
+    }
+}
+
+/* Desktop: Compact Horizontal */
+@media (min-width: 1024px) {
+    .form-intro {
+        font-size: 15px;
+        max-width: 600px;
+        margin-bottom: 8px;
+        white-space: nowrap;
+    }
+    
+    .email-form {
+        max-width: 480px;
+        margin-bottom: 60px;
+    }
+    
+    .input-group {
+        gap: 12px;
+    }
+    
+    .cta-button {
+        min-width: 100px;
+        padding: 16px 20px;
+    }
+}
+
+/* Keep existing animations and utility styles */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Accessibility and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .form-intro,
+    .email-form {
+        animation: none;
+    }
+    
+    .email-input,
+    .cta-button {
+        transition: none;
+    }
+    
+    .email-input.error {
+        animation: none;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .email-input {
+        padding: 20px;
+        font-size: 16px;
+        min-height: 56px;
+    }
+    
+    .cta-button {
+        padding: 20px;
+        min-height: 60px;
+        font-size: 16px;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .email-input {
+        border: 2px solid #000000;
+        background: #FFFFFF;
+        color: #000000;
+    }
+    
+    .email-input:focus {
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 3px var(--primary-blue);
+    }
+    
+    .cta-button {
+        background: var(--primary-blue);
+        border: 2px solid #000000;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .email-form {
+        max-width: none;
+        margin-top: 20px;
+    }
+    
+    .input-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .email-input {
+        border: 1px solid #CCCCCC;
+        background: #F9F9F9;
+        color: #000000;
+    }
+    
+    .cta-button {
+        background: #CCCCCC;
+        color: #000000;
+        border: 1px solid #999999;
+    }
+    
+    .success-message {
+        border: 1px solid #CCCCCC;
+        background: #F0F0F0;
+        color: #000000;
+    }
+}
