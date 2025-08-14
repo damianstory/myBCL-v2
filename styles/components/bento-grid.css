@@ -225,7 +225,7 @@
 /* Desktop Styles */
 @media (min-width: 1024px) {
     .bento-grid {
-        gap: 6px;
+        gap: 12px;
         margin: 2px auto;
         max-width: 400px;
     }
