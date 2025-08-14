@@ -1,0 +1,226 @@
+/* ==================================================
+   Hero Section Component Styles
+   ================================================== */
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: var(--element-gap);
+    max-width: 500px;
+}
+
+/* Hero Title (H1) */
+.hero-title {
+    font-family: var(--font-primary);
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--navy);
+    text-align: left;
+    letter-spacing: -0.02em;
+    margin: 0;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Event Date (H2) */
+.event-date {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--primary-blue);
+    text-align: left;
+    margin: 0;
+    animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+/* Key Statistic */
+.student-count {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--neutral-4);
+    text-align: left;
+    margin: 0 0 16px 0;
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+/* Supporting Text */
+.supporting-text {
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--neutral-4);
+    text-align: left;
+    margin: 0;
+    max-width: 480px;
+    animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+    .hero-content {
+        gap: 20px;
+        max-width: 520px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .event-date {
+        font-size: 20px;
+    }
+    
+    .student-count {
+        font-size: 18px;
+    }
+    
+    .supporting-text {
+        font-size: 16px;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .hero-content {
+        gap: 24px;
+        max-width: 540px;
+    }
+    
+    .hero-title {
+        font-size: 40px;
+        letter-spacing: -0.025em;
+    }
+    
+    .event-date {
+        font-size: 24px;
+    }
+    
+    .student-count {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .supporting-text {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+    .hero-content {
+        max-width: 580px;
+    }
+    
+    .hero-title {
+        font-size: 44px;
+    }
+    
+    .event-date {
+        font-size: 26px;
+    }
+    
+    .student-count {
+        font-size: 22px;
+    }
+}
+
+/* Hover Effects for Interactive Elements */
+.hero-content a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    border-bottom: 1px solid transparent;
+}
+
+.hero-content a:hover {
+    border-bottom-color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.hero-content a:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Emphasis Styling */
+.hero-content strong {
+    color: var(--navy);
+    font-weight: 700;
+}
+
+.hero-content em {
+    color: var(--primary-blue);
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .hero-title {
+        color: #000000;
+        font-weight: 900;
+    }
+    
+    .event-date {
+        color: var(--primary-blue);
+        font-weight: 900;
+    }
+    
+    .student-count,
+    .supporting-text {
+        color: #333333;
+        font-weight: 500;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-title,
+    .event-date,
+    .student-count,
+    .supporting-text {
+        animation: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .hero-content {
+        margin-bottom: 20px;
+    }
+    
+    .hero-title {
+        color: #000000;
+        font-size: 24px;
+    }
+    
+    .event-date {
+        color: #000000;
+        font-size: 18px;
+    }
+    
+    .student-count,
+    .supporting-text {
+        color: #333333;
+        font-size: 14px;
+    }
+}

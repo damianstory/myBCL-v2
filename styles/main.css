@@ -1,0 +1,419 @@
+/* ==================================================
+   myBlueprint Career Launch - Main Styles
+   ================================================== */
+
+/* CSS Variables - Brand Colors & Typography */
+:root {
+    /* Brand Colors */
+    --primary-blue: #0092FF;
+    --navy: #22224C;
+    --light-blue: #C6E7FF;
+    --off-white: #F6F6FF;
+    
+    /* Neutrals */
+    --neutral-1: #E5E9F1;
+    --neutral-2: #D9DFEA;
+    --neutral-3: #AAB7CB;
+    --neutral-4: #65738B;
+    --neutral-5: #485163;
+    --neutral-6: #252A33;
+    
+    /* Typography */
+    --font-primary: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    
+    /* Spacing */
+    --container-padding: 20px;
+    --section-gap: 40px;
+    --element-gap: 20px;
+    
+    /* Animation */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Borders */
+    --border-radius-small: 8px;
+    --border-radius-medium: 12px;
+    --border-radius-large: 16px;
+    
+    /* Shadows */
+    --shadow-subtle: 0 2px 8px rgba(34, 36, 76, 0.08);
+    --shadow-medium: 0 4px 16px rgba(34, 36, 76, 0.12);
+    --shadow-strong: 0 8px 24px rgba(0, 146, 255, 0.15);
+}
+
+/* Reset & Base Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--neutral-4);
+    background: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+/* Focus Management */
+:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+/* Selection Styles */
+::selection {
+    background: var(--primary-blue);
+    color: #FFFFFF;
+}
+
+/* Utility Classes */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Logo Styles */
+.logo-container {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
+    transition: var(--transition-fast);
+}
+
+.logo {
+    height: 36px;
+    width: auto;
+    display: block;
+    transition: var(--transition-fast);
+}
+
+.logo:hover {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+/* Main Layout Container */
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px 1fr;
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #FFFFFF;
+}
+
+/* Content Column */
+.content-column {
+    padding: 40px var(--container-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--element-gap);
+    order: 2;
+    background: #FFFFFF;
+    position: relative;
+}
+
+/* Image Column */
+.image-column {
+    position: relative;
+    overflow: hidden;
+    background: var(--neutral-1);
+    order: 1;
+    height: 300px;
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: var(--transition-medium);
+}
+
+/* Typography Styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    line-height: 1.3;
+    color: var(--navy);
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* Link Styles */
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0078CC;
+}
+
+a:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+/* Button Base Styles */
+button {
+    font-family: var(--font-primary);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Form Base Styles */
+input, textarea, select {
+    font-family: var(--font-primary);
+    border: 2px solid var(--neutral-2);
+    border-radius: var(--border-radius-small);
+    padding: 16px;
+    font-size: 16px;
+    background: #FFFFFF;
+    color: var(--navy);
+    transition: var(--transition-fast);
+    width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 146, 255, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--neutral-3);
+    font-weight: 300;
+}
+
+/* Error States */
+.error {
+    border-color: var(--neutral-6) !important;
+}
+
+.error-message {
+    color: var(--neutral-6);
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 4px;
+    display: block;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all var(--transition-fast);
+}
+
+.error-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Success States */
+.success-message {
+    background: rgba(198, 231, 255, 0.95);
+    border: 2px solid var(--primary-blue);
+    border-radius: var(--border-radius-small);
+    padding: 16px;
+    text-align: center;
+    color: var(--navy);
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 16px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition-medium);
+}
+
+.success-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loading Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.button-loading {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+
+.loading .button-text {
+    opacity: 0.7;
+}
+
+.loading .button-loading {
+    display: inline-block;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+    :root {
+        --container-padding: 40px;
+        --section-gap: 60px;
+        --element-gap: 32px;
+    }
+    
+    .logo-container {
+        top: 24px;
+        left: 24px;
+    }
+    
+    .logo {
+        height: 40px;
+    }
+    
+    .main-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+    }
+    
+    .content-column {
+        padding: 60px var(--container-padding);
+        justify-content: center;
+        order: 1;
+        gap: var(--element-gap);
+    }
+    
+    .image-column {
+        order: 2;
+        height: auto;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    :root {
+        --container-padding: 60px;
+        --section-gap: 80px;
+        --element-gap: 40px;
+    }
+    
+    .content-column {
+        padding: 80px var(--container-padding);
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+    :root {
+        --container-padding: 80px;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark Mode Support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+    /* Future dark mode styles can go here */
+}
+
+/* Print Styles */
+@media print {
+    .main-container {
+        display: block;
+        max-width: none;
+    }
+    
+    .image-column {
+        display: none;
+    }
+    
+    .content-column {
+        padding: 0;
+    }
+    
+    .logo-container {
+        position: static;
+        margin-bottom: 20px;
+    }
+}

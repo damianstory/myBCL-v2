@@ -1,0 +1,476 @@
+/* ==================================================
+   Responsive Design - Mobile First Approach
+   ================================================== */
+
+/* Base Mobile Styles (320px+) - Already defined in components */
+
+/* Small Mobile (320px - 374px) */
+@media (max-width: 374px) {
+    .content-column {
+        padding: 32px 16px;
+        gap: 16px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .event-date {
+        font-size: 16px;
+    }
+    
+    .student-count {
+        font-size: 14px;
+    }
+    
+    .supporting-text {
+        font-size: 14px;
+    }
+    
+    .form-container {
+        padding: 20px;
+    }
+    
+    .form-title {
+        font-size: 18px;
+    }
+    
+    .bento-box {
+        padding: 16px;
+    }
+    
+    .bento-text h3 {
+        font-size: 15px;
+    }
+    
+    .bento-text p {
+        font-size: 12px;
+    }
+    
+    .logo-container {
+        top: 12px;
+        left: 12px;
+    }
+    
+    .logo {
+        height: 32px;
+    }
+}
+
+/* Mobile Medium (375px - 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+    .hero-content {
+        gap: 18px;
+    }
+    
+    .bento-grid {
+        gap: 14px;
+    }
+}
+
+/* Mobile Large (415px - 767px) */
+@media (min-width: 415px) and (max-width: 767px) {
+    .content-column {
+        padding: 44px 24px;
+        gap: 22px;
+    }
+    
+    .hero-title {
+        font-size: 30px;
+    }
+    
+    .event-date {
+        font-size: 20px;
+    }
+    
+    .student-count {
+        font-size: 17px;
+    }
+    
+    .form-container {
+        padding: 26px;
+    }
+    
+    .email-form {
+        max-width: 100%;
+    }
+}
+
+/* Tablet Portrait (768px - 834px) */
+@media (min-width: 768px) and (max-width: 834px) {
+    .main-container {
+        max-width: 100%;
+    }
+    
+    .content-column {
+        padding: 50px 35px;
+    }
+    
+    .hero-content {
+        max-width: 480px;
+    }
+    
+    .bento-grid {
+        max-width: 320px;
+    }
+    
+    .email-form {
+        max-width: 360px;
+    }
+}
+
+/* Tablet Landscape (835px - 1023px) */
+@media (min-width: 835px) and (max-width: 1023px) {
+    .main-container {
+        max-width: 100%;
+    }
+    
+    .content-column {
+        padding: 60px 50px;
+    }
+    
+    .hero-content {
+        max-width: 500px;
+    }
+    
+    .bento-grid {
+        max-width: 360px;
+    }
+}
+
+/* Small Desktop (1024px - 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .main-container {
+        max-width: 1024px;
+    }
+    
+    .content-column {
+        padding: 70px 50px;
+    }
+    
+    .hero-content {
+        max-width: 520px;
+    }
+    
+    .bento-grid {
+        max-width: 380px;
+    }
+}
+
+/* Standard Desktop (1200px - 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+    .main-container {
+        max-width: 1200px;
+    }
+    
+    .content-column {
+        padding: 80px 60px;
+    }
+}
+
+/* Large Desktop (1440px - 1679px) */
+@media (min-width: 1440px) and (max-width: 1679px) {
+    .hero-title {
+        font-size: 42px;
+    }
+    
+    .event-date {
+        font-size: 25px;
+    }
+    
+    .student-count {
+        font-size: 21px;
+    }
+    
+    .supporting-text {
+        font-size: 17px;
+    }
+}
+
+/* Extra Large Desktop (1680px+) */
+@media (min-width: 1680px) {
+    .main-container {
+        max-width: 1200px;
+    }
+    
+    .content-column {
+        padding: 100px 80px;
+    }
+    
+    .hero-title {
+        font-size: 46px;
+    }
+    
+    .event-date {
+        font-size: 28px;
+    }
+    
+    .student-count {
+        font-size: 24px;
+    }
+    
+    .supporting-text {
+        font-size: 18px;
+        max-width: 520px;
+    }
+    
+    .bento-grid {
+        max-width: 440px;
+    }
+    
+    .email-form {
+        max-width: 440px;
+    }
+}
+
+/* Container Queries (Future Enhancement) */
+@supports (container-type: inline-size) {
+    .main-container {
+        container-type: inline-size;
+    }
+    
+    @container (min-width: 768px) {
+        .content-column {
+            container-type: inline-size;
+        }
+    }
+}
+
+/* Orientation-based Adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    .image-column {
+        height: 100vh;
+    }
+    
+    .content-column {
+        justify-content: flex-start;
+        padding-top: 60px;
+        gap: 24px;
+    }
+    
+    .hero-content {
+        gap: 12px;
+    }
+    
+    .bento-grid {
+        margin: 12px 0;
+    }
+}
+
+/* Portrait Tablet Specific */
+@media (orientation: portrait) and (min-width: 768px) and (max-width: 1024px) {
+    .main-container {
+        grid-template-rows: 40vh 1fr;
+    }
+    
+    .image-column {
+        height: 40vh;
+        order: 1;
+    }
+    
+    .content-column {
+        order: 2;
+        padding: 40px 30px;
+    }
+}
+
+/* Landscape Phone Specific */
+@media (orientation: landscape) and (max-width: 767px) {
+    .main-container {
+        grid-template-columns: 40% 60%;
+        grid-template-rows: none;
+        height: 100vh;
+    }
+    
+    .image-column {
+        order: 1;
+        height: 100vh;
+    }
+    
+    .content-column {
+        order: 2;
+        padding: 20px 16px;
+        gap: 16px;
+        justify-content: flex-start;
+        overflow-y: auto;
+    }
+    
+    .hero-content {
+        gap: 12px;
+    }
+    
+    .hero-title {
+        font-size: 22px;
+    }
+    
+    .event-date {
+        font-size: 16px;
+    }
+    
+    .student-count {
+        font-size: 14px;
+    }
+    
+    .supporting-text {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .bento-grid {
+        gap: 8px;
+        margin: 12px 0;
+    }
+    
+    .bento-box {
+        padding: 12px;
+    }
+    
+    .bento-text {
+        min-height: 80px;
+    }
+    
+    .bento-text h3 {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+    
+    .bento-text p {
+        font-size: 11px;
+    }
+    
+    .bento-video {
+        min-height: 100px;
+        padding: 8px;
+    }
+    
+    .form-container {
+        padding: 16px;
+    }
+    
+    .form-title {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    
+    .email-input {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .cta-button {
+        padding: 12px;
+        font-size: 14px;
+        min-height: 44px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets on touch devices */
+    .cta-button,
+    .email-input {
+        min-height: 44px;
+    }
+    
+    .video-play-button {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .bento-box {
+        min-height: 44px;
+    }
+    
+    /* Prevent hover effects on touch devices */
+    .bento-box:hover,
+    .hero-image:hover,
+    .cta-button:hover {
+        transform: none;
+    }
+}
+
+/* High Resolution Displays */
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+    .logo {
+        image-rendering: -webkit-optimize-contrast;
+    }
+    
+    .hero-image {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Foldable Devices */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .main-container {
+        grid-template-rows: 300px 1fr;
+    }
+    
+    .content-column {
+        padding: 32px 24px;
+    }
+}
+
+/* Ultra-wide Screens */
+@media (min-aspect-ratio: 21/9) {
+    .main-container {
+        max-width: 1400px;
+        grid-template-columns: 1fr 1.2fr;
+    }
+    
+    .content-column {
+        padding: 80px 60px 80px 120px;
+    }
+}
+
+/* Print Adjustments */
+@media print {
+    @page {
+        margin: 0.5in;
+        size: letter;
+    }
+    
+    .main-container {
+        display: block;
+        max-width: none;
+        min-height: auto;
+    }
+    
+    .content-column {
+        padding: 0;
+        gap: 16px;
+    }
+    
+    .image-column {
+        height: 200px;
+        order: -1;
+        margin-bottom: 20px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+        color: #000000;
+    }
+    
+    .event-date {
+        font-size: 18px;
+        color: #000000;
+    }
+    
+    .bento-grid {
+        gap: 8px;
+        margin: 12px 0;
+    }
+    
+    .bento-box {
+        border: 1px solid #CCCCCC;
+        padding: 12px;
+        break-inside: avoid;
+    }
+    
+    .form-container {
+        border: 1px solid #CCCCCC;
+        padding: 16px;
+        break-inside: avoid;
+    }
+}

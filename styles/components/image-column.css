@@ -1,0 +1,349 @@
+/* ==================================================
+   Image Column Component Styles
+   ================================================== */
+
+.image-column {
+    position: relative;
+    overflow: hidden;
+    background: var(--neutral-1);
+    order: 1;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hero Image */
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform var(--transition-slow);
+    filter: brightness(1.02) contrast(1.05) saturate(1.1);
+}
+
+.hero-image:hover {
+    transform: scale(1.02);
+}
+
+/* Image Overlay for Text Readability (if needed) */
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(34, 36, 76, 0.8));
+    padding: 20px;
+    color: white;
+    opacity: 0;
+    transition: opacity var(--transition-medium);
+}
+
+.image-column:hover .image-overlay {
+    opacity: 1;
+}
+
+/* Placeholder Styles (for development) */
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--neutral-1) 0%, var(--neutral-2) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--neutral-4);
+    text-align: center;
+    padding: 20px;
+}
+
+.image-placeholder svg {
+    width: 64px;
+    height: 64px;
+    color: var(--neutral-3);
+    margin-bottom: 16px;
+    opacity: 0.7;
+}
+
+.image-placeholder h4 {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--neutral-4);
+    margin-bottom: 8px;
+}
+
+.image-placeholder p {
+    font-size: 14px;
+    color: var(--neutral-3);
+    max-width: 280px;
+    line-height: 1.4;
+}
+
+/* Loading State for Images */
+.image-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--neutral-2);
+    border-top: 3px solid var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Image Error State */
+.image-error {
+    width: 100%;
+    height: 100%;
+    background: var(--neutral-1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--neutral-4);
+    padding: 20px;
+}
+
+.image-error svg {
+    width: 48px;
+    height: 48px;
+    color: var(--neutral-3);
+    margin-bottom: 12px;
+}
+
+.image-error p {
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+}
+
+/* Gradient Overlay for Brand Consistency */
+.image-column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 146, 255, 0.02) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(34, 36, 76, 0.02) 100%
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-medium);
+}
+
+.image-column:hover::after {
+    opacity: 1;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+    .image-column {
+        order: 2;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .hero-image {
+        object-position: center center;
+        min-height: 100vh;
+    }
+    
+    .image-placeholder {
+        min-height: 100vh;
+        padding: 40px;
+    }
+    
+    .image-placeholder svg {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .image-placeholder h4 {
+        font-size: 20px;
+    }
+    
+    .image-placeholder p {
+        font-size: 16px;
+        max-width: 320px;
+    }
+    
+    .image-overlay {
+        padding: 30px;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .image-column {
+        min-height: 100vh;
+    }
+    
+    .hero-image {
+        object-position: center center;
+    }
+    
+    .image-placeholder {
+        padding: 60px;
+    }
+    
+    .image-placeholder svg {
+        width: 96px;
+        height: 96px;
+    }
+    
+    .image-placeholder h4 {
+        font-size: 22px;
+    }
+    
+    .image-placeholder p {
+        font-size: 16px;
+        max-width: 360px;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+    .hero-image {
+        object-position: center center;
+    }
+    
+    .image-placeholder {
+        padding: 80px;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-image,
+    .image-overlay,
+    .image-column::after {
+        transition: none;
+    }
+    
+    .hero-image:hover {
+        transform: none;
+    }
+    
+    .loading-spinner {
+        animation: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .image-column {
+        border: 1px solid var(--neutral-6);
+    }
+    
+    .image-placeholder {
+        background: #FFFFFF;
+        border: 2px solid var(--neutral-6);
+    }
+    
+    .image-placeholder h4 {
+        color: #000000;
+    }
+    
+    .image-placeholder p {
+        color: #333333;
+    }
+    
+    .hero-image {
+        filter: contrast(1.2) brightness(0.95);
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .hero-image:hover {
+        transform: none;
+    }
+    
+    .image-column:hover::after,
+    .image-column:hover .image-overlay {
+        opacity: 0;
+    }
+}
+
+/* Aspect Ratio Support for Modern Browsers */
+@supports (aspect-ratio: 1) {
+    @media (max-width: 767px) {
+        .image-column {
+            aspect-ratio: 16 / 9;
+            height: auto;
+        }
+    }
+}
+
+/* Print Styles */
+@media print {
+    .image-column {
+        height: 200px;
+        order: 1;
+        page-break-inside: avoid;
+    }
+    
+    .hero-image {
+        filter: grayscale(100%) contrast(1.2);
+        object-position: center top;
+    }
+    
+    .image-overlay,
+    .image-column::after {
+        display: none;
+    }
+    
+    .image-placeholder {
+        background: #F5F5F5;
+        border: 1px solid #CCCCCC;
+    }
+    
+    .image-placeholder h4 {
+        color: #000000;
+        font-size: 16px;
+    }
+    
+    .image-placeholder p {
+        color: #666666;
+        font-size: 12px;
+    }
+    
+    .loading-spinner {
+        display: none;
+    }
+}

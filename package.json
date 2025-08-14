@@ -1,0 +1,41 @@
+{
+  "name": "myblueprint-career-launch",
+  "version": "1.0.0",
+  "description": "myBlueprint Career Launch Landing Page - December 2nd Virtual Career Fair",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8080 || python -m http.server 8080",
+    "start": "npm run dev",
+    "build": "echo 'Production build ready. Deploy files to hosting platform.'",
+    "test": "echo 'Testing form validation and responsive design'",
+    "validate-html": "echo 'HTML validation would run here'",
+    "validate-css": "echo 'CSS validation would run here'",
+    "check-a11y": "echo 'Accessibility audit would run here'",
+    "optimize": "echo 'Image optimization and minification would run here'"
+  },
+  "keywords": [
+    "myblueprint",
+    "career-fair",
+    "education",
+    "landing-page",
+    "responsive",
+    "accessibility"
+  ],
+  "author": "myBlueprint",
+  "license": "UNLICENSED",
+  "devDependencies": {},
+  "dependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie <= 11"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "private"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
