@@ -24,7 +24,7 @@
     /* Spacing */
     --container-padding: 16px;
     --section-gap: 24px;
-    --element-gap: 12px;
+    --element-gap: 24px;
     
     /* Animation */
     --transition-fast: 0.2s ease;
@@ -139,7 +139,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 8px;
+    gap: 24px;
     order: 2;
     background: #FFFFFF;
     position: relative;
@@ -346,7 +346,7 @@ textarea::placeholder {
         padding: 20px var(--container-padding);
         justify-content: flex-start;
         order: 1;
-        gap: 8px;
+        gap: 28px;
     }
     
     .image-column {
@@ -364,9 +364,8 @@ textarea::placeholder {
     }
     
     .content-column {
-        height: 100vh;
         padding: 16px var(--container-padding) 20px;
-        gap: 6px;
+        gap: 24px;
         justify-content: flex-start;
     }
 }

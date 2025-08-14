@@ -8,7 +8,7 @@
 @media (max-width: 374px) {
     .content-column {
         padding: 12px 16px;
-        gap: 8px;
+        gap: 20px;
     }
     
     .hero-title {
@@ -83,7 +83,7 @@
 @media (min-width: 415px) and (max-width: 767px) {
     .content-column {
         padding: 20px 24px;
-        gap: 8px;
+        gap: 24px;
     }
     
     .hero-title {
@@ -156,9 +156,8 @@
     }
     
     .content-column {
-        height: 100vh;
         padding: 16px 40px 20px;
-        gap: 6px;
+        gap: 24px;
         justify-content: flex-start;
     }
     
@@ -199,9 +198,8 @@
     }
     
     .content-column {
-        height: 100vh;
         padding: 16px 40px 20px;
-        gap: 6px;
+        gap: 26px;
         justify-content: flex-start;
     }
     
@@ -310,7 +308,7 @@
     .content-column {
         justify-content: flex-start;
         padding-top: 60px;
-        gap: 24px;
+        gap: 20px;
     }
     
     .hero-content {
@@ -355,7 +353,7 @@
     .content-column {
         order: 2;
         padding: 20px 16px;
-        gap: 16px;
+        gap: 18px;
         justify-content: flex-start;
         overflow-y: auto;
     }
