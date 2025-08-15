@@ -494,6 +494,28 @@
     }
 }
 
+/* Footer Responsive Behavior */
+/* Ensure footer is hidden on all mobile and tablet devices */
+@media (max-width: 1023px) {
+    .site-footer {
+        display: none !important;
+    }
+}
+
+/* Tablet Portrait Specific - Ensure footer remains hidden */
+@media (orientation: portrait) and (min-width: 768px) and (max-width: 1024px) {
+    .site-footer {
+        display: none !important;
+    }
+}
+
+/* Landscape Phone Specific - Ensure footer remains hidden */
+@media (orientation: landscape) and (max-width: 767px) {
+    .site-footer {
+        display: none !important;
+    }
+}
+
 /* Print Adjustments */
 @media print {
     @page {
@@ -543,5 +565,10 @@
         border: 1px solid #CCCCCC;
         padding: 16px;
         break-inside: avoid;
+    }
+    
+    /* Hide footer in print */
+    .site-footer {
+        display: none !important;
     }
 }
