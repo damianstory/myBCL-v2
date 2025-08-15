@@ -201,7 +201,8 @@
 @media (min-width: 768px) {
     .image-column {
         order: 2;
-        height: 100vh;
+        min-height: 100vh;
+        height: 100%;
     }
     
     .hero-image,
@@ -237,7 +238,8 @@
 /* Desktop Styles */
 @media (min-width: 1024px) {
     .image-column {
-        height: 100vh;
+        min-height: 100vh;
+        height: 100%;
     }
     
     .hero-image,

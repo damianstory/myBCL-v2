@@ -122,7 +122,7 @@
     }
     
     .bento-grid {
-        max-width: 320px;
+        max-width: 480px;
     }
     
     .email-form {
@@ -145,7 +145,7 @@
     }
     
     .bento-grid {
-        max-width: 360px;
+        max-width: 540px;
     }
 }
 
@@ -167,7 +167,7 @@
     }
     
     .bento-grid {
-        max-width: 380px;
+        max-width: 570px;
         gap: 10px;
         margin: 4px 0;
     }
@@ -278,7 +278,7 @@
     }
     
     .bento-grid {
-        max-width: 440px;
+        max-width: 660px;
     }
     
     .email-form {
