@@ -156,8 +156,8 @@
     }
     
     .content-column {
-        padding: 16px 40px 20px;
-        gap: 24px;
+        padding: 16px 40px 24px;
+        gap: 16px;
         justify-content: flex-start;
     }
     
@@ -198,8 +198,8 @@
     }
     
     .content-column {
-        padding: 16px 40px 20px;
-        gap: 26px;
+        padding: 16px 40px 24px;
+        gap: 16px;
         justify-content: flex-start;
     }
     

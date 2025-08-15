@@ -365,8 +365,8 @@ textarea::placeholder {
     }
     
     .content-column {
-        padding: 24px var(--container-padding) 16px;
-        gap: 18px;
+        padding: 24px var(--container-padding) 24px;
+        gap: 16px;
         justify-content: flex-start;
         align-items: stretch;
     }
