@@ -135,12 +135,12 @@ body {
 
 /* Content Column */
 .content-column {
-    padding: 24px var(--container-padding) 16px;
+    padding: 8px var(--container-padding) 16px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: stretch;
-    gap: 24px;
+    gap: 20px;
     order: 2;
     background: #FFFFFF;
     position: relative;
