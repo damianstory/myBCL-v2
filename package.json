@@ -2,10 +2,11 @@
   "name": "myblueprint-career-launch",
   "version": "1.0.0",
   "description": "myBlueprint Career Launch Landing Page - December 2nd Virtual Career Fair",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
-    "dev": "python3 -m http.server 8080 || python -m http.server 8080",
-    "start": "npm run dev",
+    "dev": "node server.js",
+    "start": "node server.js",
+    "static": "python3 -m http.server 8080 || python -m http.server 8080",
     "build": "mkdir -p public && cp -r *.html styles js images fonts public/ 2>/dev/null || cp *.html public/ && [ -d styles ] && cp -r styles public/ || true && [ -d js ] && cp -r js public/ || true && [ -d images ] && cp -r images public/ || true && [ -d fonts ] && cp -r fonts public/ || true",
     "test": "echo 'Testing form validation and responsive design'",
     "validate-html": "echo 'HTML validation would run here'",
@@ -23,8 +24,14 @@
   ],
   "author": "myBlueprint",
   "license": "UNLICENSED",
-  "devDependencies": {},
-  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
