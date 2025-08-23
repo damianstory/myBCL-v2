@@ -11,10 +11,10 @@ class FormHandler {
         this.errorElement = null;
         this.successElement = null;
         
-        // Zoho API configuration (to be updated with real credentials)
+        // API configuration (optimized for serverless)
         this.apiConfig = {
-            endpoint: 'https://forms.zohopublic.com/api/v1/json/forms/{form_id}/entries',
-            timeout: 10000,
+            endpoint: '/api/email-capture',
+            timeout: 15000,  // Increased for serverless cold starts
             maxRetries: 3,
             retryDelay: 1000
         };
@@ -155,30 +155,21 @@ class FormHandler {
     }
 
     /**
-     * Submit data to Zoho API
+     * Submit data to Zoho API via our server endpoint
      * @param {Object} data - Validated form data
      * @returns {Promise<Object>} - Submission result
      */
     async submitToZoho(data) {
         const payload = {
             email: data.email,
-            source: 'myblueprint-career-launch-landing',
-            timestamp: new Date().toISOString(),
-            referrer: document.referrer || 'direct',
-            userAgent: navigator.userAgent,
-            event: 'career-launch-agenda-signup'
+            source: 'myblueprint-career-launch-landing'
         };
-
-        // For development/testing, simulate API call
-        if (this.isDevelopment()) {
-            return this.simulateApiCall(payload);
-        }
 
         return this.makeApiCall(payload);
     }
 
     /**
-     * Make actual API call to Zoho
+     * Make API call to our server endpoint
      * @param {Object} payload - Data to submit
      * @returns {Promise<Object>} - API response
      */
@@ -199,18 +190,21 @@ class FormHandler {
 
             clearTimeout(timeoutId);
 
+            const result = await response.json();
+
             if (!response.ok) {
-                throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                throw new Error(result.message || `API Error: ${response.status} ${response.statusText}`);
             }
 
-            const result = await response.json();
             return { success: true, data: result };
 
         } catch (error) {
             clearTimeout(timeoutId);
 
-            // Retry logic
-            if (retryCount < this.apiConfig.maxRetries && !controller.signal.aborted) {
+            // Retry logic for network errors only
+            if (retryCount < this.apiConfig.maxRetries && 
+                !controller.signal.aborted && 
+                (error.name === 'TypeError' || error.message.includes('fetch'))) {
                 await this.delay(this.apiConfig.retryDelay * (retryCount + 1));
                 return this.makeApiCall(payload, retryCount + 1);
             }
@@ -219,38 +213,14 @@ class FormHandler {
         }
     }
 
-    /**
-     * Simulate API call for development
-     * @param {Object} payload - Data to submit
-     * @returns {Promise<Object>} - Simulated response
-     */
-    async simulateApiCall(payload) {
-        console.log('Development mode: Simulating Zoho API call', payload);
-        
-        // Simulate network delay
-        await this.delay(1500);
-
-        // Simulate success with occasional failures for testing
-        if (Math.random() < 0.9) {
-            return {
-                success: true,
-                data: {
-                    id: 'test-' + Date.now(),
-                    email: payload.email,
-                    status: 'subscribed'
-                }
-            };
-        } else {
-            throw new Error('Simulated API failure for testing');
-        }
-    }
 
     /**
      * Handle successful form submission
      * @param {Object} result - Success result from API
      */
     handleSuccess(result) {
-        this.showSuccess('Thank you! We\'ll notify you as soon as the agenda is available.');
+        const message = result.data?.message || 'Thank you! We\'ll notify you as soon as the agenda is available.';
+        this.showSuccess(message);
         this.announceToScreenReader('Email submitted successfully. You will receive notifications about the career launch agenda.');
         
         // Reset form after delay

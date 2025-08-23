@@ -295,30 +295,7 @@ textarea::placeholder {
     transform: translateY(0);
 }
 
-/* Loading Animation */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.button-loading {
-    display: none;
-    width: 16px;
-    height: 16px;
-    border: 2px solid transparent;
-    border-top: 2px solid currentColor;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-left: 8px;
-}
-
-.loading .button-text {
-    opacity: 0.7;
-}
-
-.loading .button-loading {
-    display: inline-block;
-}
+/* Note: Loading animation moved to email-form.css for single spinner implementation */
 
 /* Tablet Styles */
 @media (min-width: 768px) {

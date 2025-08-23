@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "myblueprint-career-launch",
+  "functions": {
+    "api/email-capture.js": {
+      "maxDuration": 10
+    }
+  },
+  "env": {
+    "ZOHO_CAMPAIGNS_CLIENT_ID": "@zoho_campaigns_client_id",
+    "ZOHO_CAMPAIGNS_CLIENT_SECRET": "@zoho_campaigns_client_secret", 
+    "ZOHO_CAMPAIGNS_REFRESH_TOKEN": "@zoho_campaigns_refresh_token",
+    "ZOHO_CAMPAIGNS_LIST_KEY": "@zoho_campaigns_list_key"
+  }
+}

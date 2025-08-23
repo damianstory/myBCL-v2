@@ -15,20 +15,31 @@ Always reference these documents for detailed specifications, measurements, and 
 
 ## Technology Stack
 - **Frontend**: HTML5, CSS3 (Grid/Flexbox), Vanilla JavaScript
-- **Deployment**: Cloud Code platform
+- **Backend**: Serverless functions (Vercel)
+- **Deployment**: Vercel (serverless platform)
 - **Form Integration**: Zoho API for email capture
 - **Typography**: Museo Sans (primary), Open Sans (fallback)
 - **Images**: WebP with JPG fallbacks, optimized for performance
 
 ## Key Commands
-- `npm start` or `npm run dev`: Start local development server (uses Python HTTP server on port 8080)
-- `python3 -m http.server 8000`: Alternative local server command (if port 8080 is occupied)
+- `node test-server.js`: Start local development server with serverless function testing
+- `npx vercel dev`: Start Vercel development server (alternative local testing)
+- `npx vercel deploy`: Deploy to Vercel staging environment
+- `npx vercel deploy --prod`: Deploy to production
 - `npm run build`: Build and optimize for production (currently placeholder)
 - `npm run test`: Run form validation tests (currently placeholder)
 - `npm run validate-html`: HTML validation (currently placeholder) 
 - `npm run check-a11y`: Accessibility audit (currently placeholder)
 
 ## Architecture Overview
+
+### Serverless Architecture
+The application uses a serverless architecture for maximum reliability and zero maintenance:
+- **Static Files**: HTML, CSS, JS served via Vercel's global CDN
+- **API Endpoint**: `/api/email-capture.js` runs as a serverless function
+- **Form Integration**: Zoho Campaigns API integration with OAuth token refresh
+- **Auto-scaling**: Scales from 0 to millions of requests automatically
+- **Zero Downtime**: No servers to crash or restart
 
 ### Application Structure
 The application follows a component-based architecture with a main application class (`MyBlueprintCareerLaunch`) that manages:
@@ -58,6 +69,9 @@ The application follows a component-based architecture with a main application c
 ```
 /
 ├── index.html                    # Main landing page with inline critical CSS
+├── api/
+│   └── email-capture.js         # Vercel serverless function for email capture
+├── vercel.json                  # Vercel deployment configuration
 ├── styles/
 │   ├── main.css                 # Global styles, CSS variables, responsive rules
 │   ├── museo-sans.css           # Custom font loading
@@ -71,14 +85,16 @@ The application follows a component-based architecture with a main application c
 │   ├── main.js                  # Main application class and initialization
 │   ├── validation.js            # Form validation utilities
 │   └── components/              # Component JavaScript modules
-│       ├── form-handler.js      # Zoho API integration
+│       ├── form-handler.js      # Form handler (calls serverless API)
 │       ├── video-player.js      # Video placeholder interactions
 │       └── bento-interactions.js # Bento grid enhancements
 ├── images/
 │   ├── logo.svg                 # myBlueprint logo
 │   └── placeholder-note.md      # Notes about missing hero images
-└── fonts/
-    └── museo-sans/              # Custom font files
+├── fonts/
+│   └── museo-sans/              # Custom font files
+├── server.js                    # Legacy Express server (kept for reference)
+└── .env                         # Environment variables for local development
 ```
 
 ## Brand Guidelines (CRITICAL)
@@ -145,6 +161,30 @@ Large: 1440px+
 - Use `python3 -m http.server` on different ports if default conflicts
 - All JavaScript components use progressive enhancement patterns
 - Error tracking and performance metrics built into main application
+
+## Deployment Instructions
+
+### Environment Variables (Required for Production)
+Set these in Vercel dashboard under Project Settings → Environment Variables:
+- `ZOHO_CAMPAIGNS_CLIENT_ID`: Your Zoho OAuth client ID
+- `ZOHO_CAMPAIGNS_CLIENT_SECRET`: Your Zoho OAuth client secret  
+- `ZOHO_CAMPAIGNS_REFRESH_TOKEN`: Your Zoho OAuth refresh token
+- `ZOHO_CAMPAIGNS_LIST_KEY`: Your Zoho Campaigns list key
+
+### Deploy to Production
+1. **Connect Repository**: Link your Git repo to Vercel
+2. **Set Environment Variables**: Add Zoho credentials in Vercel dashboard
+3. **Deploy**: Push to main branch for automatic deployment
+4. **Custom Domain**: Add your domain in Vercel project settings (optional)
+
+### Manual Deployment
+```bash
+# Deploy to staging
+npx vercel deploy
+
+# Deploy to production
+npx vercel deploy --prod
+```
 
 ## Important Constraints
 - NO external CSS/JS frameworks (Bootstrap, Tailwind, jQuery, etc.)
