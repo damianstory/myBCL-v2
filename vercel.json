@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "myblueprint-career-launch",
   "functions": {
     "api/email-capture.js": {
       "maxDuration": 10
